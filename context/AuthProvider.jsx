@@ -21,9 +21,13 @@ export function AuthProvider(Props) {
         if (res.data) {
           setToken(res.data.access_token);
           await SecureStore.setItemAsync("user", JSON.stringify(res.data));
+        } else {
+          ToastAndroid.show("Token Error", ToastAndroid.SHORT);
         }
       } catch (error) {
-        console.log("token error", error);
+        console.log("Token Error", error);
+        ToastAndroid.show("Token Error", ToastAndroid.SHORT);
+
         return null;
       }
     };

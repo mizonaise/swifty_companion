@@ -16,7 +16,6 @@ import { Button, Text, View } from "@/components/Themed";
 type ItemProps = { title: string; level: string; status: boolean };
 
 const Item = ({ title, level, status }: ItemProps) => {
-  console.log(status);
   return (
     <View>
       <View style={[styles.row, styles.item]}>
@@ -58,8 +57,6 @@ export default function DetailsScreen() {
   } = params;
   const userCursus = JSON.parse(cursus as string);
   const projects = JSON.parse(userProjects as string);
-
-  console.log(projects);
 
   const [selected, setSelected] = useState("projects");
   const [selectedCursus, setSelectedCursus] = useState(userCursus[0].cursus.id);

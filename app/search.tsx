@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, ToastAndroid } from "react-native";
 
 import { Button, Input, Text, View } from "@/components/Themed";
 import axios from "axios";
@@ -41,7 +41,8 @@ export default function SearchScreen() {
       })
       .catch((error) => {
         setLoading(false);
-        console.log("error", error);
+        console.log("User Failed", error);
+        ToastAndroid.show("Get User Failed", ToastAndroid.SHORT);
       });
   };
 

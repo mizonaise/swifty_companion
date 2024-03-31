@@ -6,16 +6,17 @@ import {
 } from "@react-navigation/native";
 import { Stack, router } from "expo-router";
 import { useFonts } from "expo-font";
-import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Logo from "@/assets/icons/42";
 import { AuthProvider } from "@/context/AuthProvider";
 import { useColorScheme } from "@/components/useColorScheme";
 
 import * as SecureStore from "expo-secure-store";
+import { useThemeColor } from "@/components/Themed";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -71,9 +72,13 @@ function RootLayoutNav() {
             name="search"
             options={{
               headerTitle: (props) => <Logo {...props} />,
-              headerRight: () => (
+              headerRight: ({ tintColor }) => (
                 <TouchableOpacity onPress={() => handleLogout()}>
-                  <Ionicons name="search" size={32} color="green" />
+                  <MaterialCommunityIcons
+                    name="logout"
+                    size={24}
+                    color={tintColor}
+                  />
                 </TouchableOpacity>
               ),
             }}
@@ -82,9 +87,13 @@ function RootLayoutNav() {
             name="details"
             options={{
               headerTitle: (props) => <Logo {...props} />,
-              headerRight: () => (
+              headerRight: ({ tintColor }) => (
                 <TouchableOpacity onPress={() => handleLogout()}>
-                  <Ionicons name="search" size={32} color="green" />
+                  <MaterialCommunityIcons
+                    name="logout"
+                    size={24}
+                    color={tintColor}
+                  />
                 </TouchableOpacity>
               ),
             }}

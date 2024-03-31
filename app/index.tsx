@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, Platform, StyleSheet } from "react-native";
+import { Image, Platform, StyleSheet, ToastAndroid } from "react-native";
 
 import Logo from "@/assets/icons/42";
 import * as WebBrowser from "expo-web-browser";
@@ -34,10 +34,10 @@ export default function WelcomScreen() {
       if (res?.type === "success") {
         setCode(res.params.code);
         router.replace("/search");
-      }
-      // else ToastAndroid.show("AUTHENTICATION FAILED", ToastAndroid.SHORT);
+      } else ToastAndroid.show("Authentication Failed", ToastAndroid.SHORT);
     } catch (error) {
-      console.log("error:", error);
+      console.log("Authentication Failed:", error);
+      ToastAndroid.show("Authentication Failed", ToastAndroid.SHORT);
     }
   };
   return (
